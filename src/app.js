@@ -1,11 +1,11 @@
-
 const express = require("express");
+const dotenv = require("dotenv");
 const { authenticateDatabase } = require("./Config/dbConfig");
+authenticateDatabase();
+const PORT = process.env.PORT;
 
 const app = express();
 
-authenticateDatabase();
-
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("The backend server is running on port 3000...");
 });
