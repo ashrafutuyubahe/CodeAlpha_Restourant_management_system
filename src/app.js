@@ -1,11 +1,11 @@
-const express=  require("express");
-const dbConnection= require("./Config/dbConfig");
-const app= express();
 
+const express = require("express");
+const { authenticateDatabase } = require("./Config/dbConfig");
 
+const app = express();
 
+authenticateDatabase();
 
-
-app.listen(300,()=>{
-    console.log("the backend server is running...")
-})
+app.listen(3000, () => {
+  console.log("The backend server is running on port 3000...");
+});
