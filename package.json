@@ -11,11 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.7",
     "express-jwt": "^8.5.1",
+    "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.9",
     "pg": "^8.13.1",
-    "restourant_mng_syst": "file:"
+    "pg-hstore": "^2.3.4",
+    "restourant_mng_syst": "file:",
+    "sequelize": "^6.37.5"
   }
 }
