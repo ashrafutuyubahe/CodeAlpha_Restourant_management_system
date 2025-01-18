@@ -2,7 +2,7 @@
 const { Sequelize } = require('sequelize');
 
 
-const sequelize = new Sequelize('postgres://postgres:123@localhost:5432/Restaurant_management_syst');
+const sequelize = new Sequelize('postgres://postgres:123@localhost:5432/restaurant_management_sys');
 
 
 async function authenticateDatabase() {
