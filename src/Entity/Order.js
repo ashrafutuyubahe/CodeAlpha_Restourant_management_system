@@ -1,32 +1,30 @@
 const { DataTypes } = require('sequelize');
 const { sequelize} = require('../Config/dbConfig');
 
-const User = sequelize.define("User", {
-    userId: {
+const Order = sequelize.define("Order", {
+    orderId: {
       type: DataTypes.BIGINT,
       primaryKey: true,
       autoIncrement: true,
     },
-    userName: {
-      type: DataTypes.STRING,
+    tableId: {
+      type: DataTypes.BIGINT,
       allowNull: false,
     },
-    userEmail: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    userPassword: {
-      type: DataTypes.STRING,
+    userId: {
+      type: DataTypes.BIGINT,
       allowNull: false,
     },
-    Role: {
+    status: {
       type: DataTypes.STRING,
+      defaultValue: "pending",
+    },
+    totalPrice: {
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
-      validate: { isIn: [["customer", "admin"]] },
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });
-  
-module.exports = User;
+
+  module.exports=Order;

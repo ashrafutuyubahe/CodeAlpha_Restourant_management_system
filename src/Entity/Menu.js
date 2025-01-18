@@ -1,32 +1,35 @@
 const { DataTypes } = require('sequelize');
 const { sequelize} = require('../Config/dbConfig');
 
-const User = sequelize.define("User", {
-    userId: {
+
+
+const Menu = sequelize.define("Menu", {
+    menuId: {
       type: DataTypes.BIGINT,
       primaryKey: true,
       autoIncrement: true,
     },
-    userName: {
+    menuName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    userEmail: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    userPassword: {
-      type: DataTypes.STRING,
+    description: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
-    Role: {
+    category: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: { isIn: [["customer", "admin"]] },
+    },
+    price: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+    availability: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });
-  
-module.exports = User;
+
