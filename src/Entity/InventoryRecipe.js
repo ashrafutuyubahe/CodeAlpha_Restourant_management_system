@@ -16,4 +16,17 @@ const InventoryRecipe = sequelize.define("InventoryRecipe", {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
-  });
+  }); 
+
+
+
+
+
+
+
+
+
+
+
+
+

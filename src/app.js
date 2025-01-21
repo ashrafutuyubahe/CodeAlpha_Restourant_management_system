@@ -14,6 +14,7 @@ app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("/other",authRoutes)
 
+
 app.listen(PORT, () => {
   console.log("The backend server is running on port 3000...");
 });
