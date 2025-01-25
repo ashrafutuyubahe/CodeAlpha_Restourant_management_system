@@ -1,21 +1,18 @@
-const Inventory = require('../Entity/Inventory');
-
+const Inventory = require("../Entity/Inventory");
 
 exports.createInventoryItem = async (req, res) => {
   try {
     const { itemName, quantity, unit } = req.body;
 
-    
     const inventoryItem = await Inventory.create({ itemName, quantity, unit });
     res.status(201).json({
-      message:"inventory item created successfully",
-      inventoryItem
+      message: "inventory item created successfully",
+      inventoryItem,
     });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
-
 
 exports.getInventoryItems = async (req, res) => {
   try {
@@ -25,7 +22,6 @@ exports.getInventoryItems = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
 
 exports.getInventoryItemById = async (req, res) => {
   try {
@@ -39,7 +35,6 @@ exports.getInventoryItemById = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
 
 exports.updateInventoryItem = async (req, res) => {
   try {
@@ -56,13 +51,13 @@ exports.updateInventoryItem = async (req, res) => {
   }
 };
 
-
 exports.deleteInventoryItem = async (req, res) => {
   try {
     const inventoryItem = await Inventory.findByPk(req.params.id);
+
     if (inventoryItem) {
       await inventoryItem.destroy();
-      res.status(204).send();
+      res.status(200).json({ message: "inventory item deleted sucessfully" });
     } else {
       res.status(404).json({ error: "Inventory item not found" });
     }
@@ -70,3 +65,4 @@ exports.deleteInventoryItem = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
