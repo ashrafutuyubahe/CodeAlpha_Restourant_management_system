@@ -1,5 +1,6 @@
 
-const { User } = require('../Entity/Users');
+const User = require('../Entity/Users');
+
 
 
 

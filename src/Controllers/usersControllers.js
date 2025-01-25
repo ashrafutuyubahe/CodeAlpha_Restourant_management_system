@@ -4,7 +4,7 @@ const userService = require("../Services/usersService");
 const { checkAdmin } = require("../Middleware/authMiddleware");
 const { checkCustomer } = require("../Middleware/authMiddleware");
 
-router.get("/users", checkAdmin, userService.getUsers);
-router.get("/users/:id", checkCustomer, userService.getUserById);
+router.get("/get-all", checkAdmin, userService.getUsers);
+router.get("/get-single/:id", checkAdmin, userService.getUserById);
 
 module.exports = router;
