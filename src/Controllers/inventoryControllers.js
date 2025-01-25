@@ -1,15 +1,14 @@
 const express = require('express');
-const inventoryService = require('../Services/inventoryService');
-
 const router = express.Router();
-const {checkAdmin} = require("../Services/authService");
+const inventoryService = require("../Services/inventoryService")
+const {checkAdmin} = require("../Middleware/authMiddleware");
 
-// Routes for Inventory
-router.post('/inventory',inventoryService.createInventoryItem);
-router.get('/inventory', inventoryService.getInventoryItems);
-router.get('/inventory/:id', inventoryService.getInventoryItemById);
-router.put('/inventory/:id', inventoryService.updateInventoryItem);
-router.delete('/inventory/:id', inventoryService.deleteInventoryItem);
+
+router.post('/inventory',checkAdmin,inventoryService.createInventoryItem);
+router.get('/inventory', checkAdmin,inventoryService.getInventoryItems);
+router.get('/inventory/:id', checkAdmin,inventoryService.getInventoryItemById);
+router.put('/inventory/:id', checkAdmin,inventoryService.updateInventoryItem);
+router.delete('/inventory/:id', checkAdmin,inventoryService.deleteInventoryItem);
 
 
 module.exports = router;

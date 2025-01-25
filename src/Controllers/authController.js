@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.post("/register",authService.register);
 router.post("/login",authService.login);
+
 router.get("/protectedResource",()=>{
    console.log("protectd resource");
 });
