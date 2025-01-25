@@ -45,7 +45,7 @@ exports.updateOrder = async (req, res) => {
     const order = await Order.findByPk(req.params.id);
     if (order) {
       await order.update({ status, totalPrice });
-      res.status(200).json(order);
+      res.status(200).json({message:"order updated  successfull",order});
     } else {
       res.status(404).json({ error: "Order not found" });
     }
@@ -60,7 +60,7 @@ exports.deleteOrder = async (req, res) => {
     const order = await Order.findByPk(req.params.id);
     if (order) {
       await order.destroy();
-      res.status(204).send();
+      res.status(200).json({ message: "order  deleted sucessfully" });
     } else {
       res.status(404).json({ error: "Order not found" });
     }

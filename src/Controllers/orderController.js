@@ -8,7 +8,7 @@ router.post("/place-order", checkCustomer,orderService.placeOrder);
 router.get("/get-details/:id", checkCustomer,orderService.getOrderDetails); 
 router.post('/create', checkAdmin,orderService.createOrder);
 router.get('/get-orders',checkAdmin,orderService.getOrders);
-router.get('/get-single:id', checkAdmin,orderService.getOrderById);
+router.get('/get-single/:id', checkAdmin,orderService.getOrderById);
 router.put('/update-order/:id', checkAdmin,orderService.updateOrder);
 router.delete('/delete-order/:id', checkAdmin,orderService.deleteOrder);
 
