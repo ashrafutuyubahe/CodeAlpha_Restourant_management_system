@@ -4,7 +4,7 @@ const inventoryService = require("../Services/inventoryService")
 const {checkAdmin} = require("../Middleware/authMiddleware");
 
 
-router.post('/inventory',checkAdmin,inventoryService.createInventoryItem);
+router.post('/create',checkAdmin,inventoryService.createInventoryItem);
 router.get('/inventory', checkAdmin,inventoryService.getInventoryItems);
 router.get('/inventory/:id', checkAdmin,inventoryService.getInventoryItemById);
 router.put('/inventory/:id', checkAdmin,inventoryService.updateInventoryItem);

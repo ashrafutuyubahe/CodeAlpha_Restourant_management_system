@@ -1,11 +1,16 @@
-const { Inventory } = require('../Entity/Inventory');
+const Inventory = require('../Entity/Inventory');
 
 
 exports.createInventoryItem = async (req, res) => {
   try {
     const { itemName, quantity, unit } = req.body;
+
+    
     const inventoryItem = await Inventory.create({ itemName, quantity, unit });
-    res.status(201).json(inventoryItem);
+    res.status(201).json({
+      message:"inventory item created successfully",
+      inventoryItem
+    });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

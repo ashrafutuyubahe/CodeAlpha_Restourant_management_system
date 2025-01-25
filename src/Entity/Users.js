@@ -27,6 +27,7 @@ const User = sequelize.define("User", {
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
+    
   });
   
 module.exports = User;
