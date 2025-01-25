@@ -1,9 +1,11 @@
 const express = require('express');
 const inventoryService = require('../Services/inventoryService');
+
 const router = express.Router();
+const {checkAdmin} = require("../Services/authService");
 
 // Routes for Inventory
-router.post('/inventory', inventoryService.createInventoryItem);
+router.post('/inventory',inventoryService.createInventoryItem);
 router.get('/inventory', inventoryService.getInventoryItems);
 router.get('/inventory/:id', inventoryService.getInventoryItemById);
 router.put('/inventory/:id', inventoryService.updateInventoryItem);
