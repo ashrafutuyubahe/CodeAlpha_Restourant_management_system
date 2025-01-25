@@ -2,6 +2,7 @@
 const Order = require("../Entity/Order");
 const { Op } = require("sequelize");
 const Table= require("../Entity/Table");
+const sequelize= require('sequelize');
 
 exports.getSalesReport = async (req, res) => {
   try {
