@@ -33,3 +33,5 @@ const Menu = sequelize.define("Menu", {
     updatedAt: DataTypes.DATE,
   });
 
+
+  module.exports= Menu;

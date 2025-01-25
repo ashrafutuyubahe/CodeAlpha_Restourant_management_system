@@ -1,11 +1,11 @@
-const { Menu } = require('../Entity/Menu');
+const  Menu  = require('../Entity/Menu');
 
 
 exports.createMenuItem = async (req, res) => {
   try {
     const { menuName, description, category, price, availability } = req.body;
     const menuItem = await Menu.create({ menuName, description, category, price, availability });
-    res.status(201).json(menuItem);
+    res.status(201).json({message:"menu added successfuly",menuItem});
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -42,7 +42,7 @@ exports.updateMenuItem = async (req, res) => {
     const menuItem = await Menu.findByPk(req.params.id);
     if (menuItem) {
       await menuItem.update({ menuName, description, category, price, availability });
-      res.status(200).json(menuItem);
+      res.status(200).json({message:"menu  has been updated  successfully",menuItem});
     } else {
       res.status(404).json({ error: "Menu item not found" });
     }
@@ -57,7 +57,7 @@ exports.deleteMenuItem = async (req, res) => {
     const menuItem = await Menu.findByPk(req.params.id);
     if (menuItem) {
       await menuItem.destroy();
-      res.status(204).send();
+      res.status(200).json({ message: "menu  deleted sucessfully" });
     } else {
       res.status(404).json({ error: "Menu item not found" });
     }

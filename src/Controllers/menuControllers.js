@@ -5,10 +5,10 @@ const menuService = require("../Services/menuService");
 const { checkCustomer } = require("../Middleware/authMiddleware");
 const { checkAdmin } = require("../Middleware/authMiddleware");
 
-router.post("/menu", checkAdmin, menuService.createMenuItem);
-router.get("/menu", checkCustomer, menuService.getMenuItems);
-router.get("/menu/:id", checkCustomer, menuService.getMenuItemById);
-router.put("/menu/:id", checkAdmin, menuService.updateMenuItem);
-router.delete("/menu/:id", checkAdmin, menuService.deleteMenuItem);
+router.post("/create", checkAdmin, menuService.createMenuItem);
+router.get("/get-menus", checkCustomer, menuService.getMenuItems);
+router.get("/single-menu/:id", checkCustomer, menuService.getMenuItemById);
+router.put("/update-menu/:id", checkAdmin, menuService.updateMenuItem);
+router.delete("/delete-menu/:id", checkAdmin, menuService.deleteMenuItem);
 
 module.exports = router;
