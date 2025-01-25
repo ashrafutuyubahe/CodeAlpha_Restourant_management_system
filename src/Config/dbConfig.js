@@ -1,5 +1,5 @@
+// dbConfig.js
 const { Sequelize } = require("sequelize");
-require("./associations");
 
 const sequelize = new Sequelize(
   "postgres://postgres:123@localhost:5432/restaurant_management_sys"
@@ -8,6 +8,8 @@ const sequelize = new Sequelize(
 
 async function authenticateDatabase() {
   try {
+    
+    require("./associations");
     await sequelize.sync({ alter: false });
     console.log("Database synchronized successfully.");
 

@@ -5,7 +5,7 @@ const {checkAdmin} = require("../Middleware/authMiddleware");
 
 
 
-router.get("/sales", checkAdmin,reportController.getSalesReport);
+router.get("/sales-report", checkAdmin,reportController.getSalesReport);
 router.get("/table-usage", checkAdmin,reportController.getTableUsageReport);
 router.get("/orders-summary", checkAdmin,reportController.getOrdersSummary);
 

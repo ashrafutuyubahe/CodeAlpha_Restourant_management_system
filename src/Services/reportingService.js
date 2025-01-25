@@ -25,31 +25,28 @@ exports.getSalesReport = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
-
-
 exports.getTableUsageReport = async (req, res) => {
-    try {
-      const tableUsage = await Table.findAll({
-        attributes: [
-          "tableId",
-          [sequelize.fn("COUNT", sequelize.col("Orders.orderId")), "orderCount"],
-        ],
-        include: [
-          {
-            model: Order,
-            attributes: [],
-          },
-        ],
-        group: ["tableId"],
-      });
-  
-      res.status(200).json(tableUsage);
-    } catch (err) {
-      res.status(400).json({ error: err.message });
-    }
-  };
+  try {
+    const tableUsage = await Table.findAll({
+      attributes: [
+        "tableId",
+        [sequelize.fn("COUNT", sequelize.col("orders.orderId")), "orderCount"], // Correct alias 'orders'
+      ],
+      include: [
+        {
+          model: Order,
+          attributes: [],
+          as: 'orders', // Correct alias
+        },
+      ],
+      group: ["Table.tableId"], // Explicitly reference 'Table.tableId'
+    });
 
+    res.status(200).json(tableUsage);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
 
 
   exports.getOrdersSummary = async (req, res) => {

@@ -14,7 +14,7 @@ const Order = sequelize.define("Order", {
   },
   userId: {
     type: DataTypes.BIGINT,
-    allowNull: false,
+    allowNull: false, 
   },
   status: {
     type: DataTypes.ENUM,
