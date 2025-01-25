@@ -8,6 +8,7 @@ const userRoutes = require("./Controllers/usersControllers");
 const menuRoutes = require("./Controllers/menuControllers");
 const orderRoutes = require("./Controllers/orderController");
 const inventoryRoutes = require("./Controllers/inventoryControllers");
+const reportsRoutes= require("./Controllers/reportController"); 
 
 
 dotenv.config();
@@ -24,6 +25,7 @@ app.use("/users", userRoutes);
 app.use("/menu", menuRoutes);
 app.use("/orders", orderRoutes);
 app.use("/inventory", inventoryRoutes);
+app.use("/reports",reportsRoutes);
 
 
 app.listen(PORT, () => {

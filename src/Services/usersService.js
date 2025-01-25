@@ -1,5 +1,5 @@
 
-const { User } = require('../Entity/Customers');
+const { User } = require('../Entity/Users');
 
 
 exports.createUser = async (req, res) => {

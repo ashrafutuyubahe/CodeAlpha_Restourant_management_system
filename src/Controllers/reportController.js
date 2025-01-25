@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const reportController = require("../Services/reportController");
+const reportController = require("../Services/reportingService");
 
 
 router.get("/sales", reportController.getSalesReport);
