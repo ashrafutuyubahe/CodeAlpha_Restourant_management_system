@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const CustomerEntity = require('../Entity/Users');
+const User = require('../Entity/Users');
 
 
   exports.register=  async (req, res) => {
@@ -25,25 +25,31 @@ const CustomerEntity = require('../Entity/Users');
     }
 };
 
+
+
+
 exports.login = async (req, res) => {
     try {
-        const { customerEmail, customerPassword } = req.body;
-
-        
-        const Customer = await CustomerEntity.findOne({ where: { customerEmail } });
-        if (!Customer) return res.status(400).json({ message: 'Invalid customerEmail or customerPassword.' });
-
-        
-        const isMatch = await bcrypt.compare(customerPassword, Customer.customerPassword);
-        if (!isMatch) return res.status(400).json({ message: 'Invalid customerEmail or customerPassword.' });
-
-       
-        const token = jwt.sign({ id: Customer.id, role: Customer.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
-
-        res.status(200).json({ message: 'Login successful.', token });
-    } catch (error) {
-        res.status(500).json({ message: 'Login failed.', error });
+      const { userEmail, userPassword } = req.body;
+  
+      const user = await User.findOne({ where: { userEmail } });
+      if (!User) {
+        return res.status(404).json({ error: "User not found" });
+      }
+  
+      const isPasswordValid = await bcrypt.compare(userPassword, user.userPassword);
+      if (!isPasswordValid) {
+        return res.status(401).json({ error: "Invalid credentials" });
+      }
+  
+      const token = jwt.sign(
+        { userId: user.userId, role: user.Role },
+        process.env.JWT_SECRET,
+        { expiresIn: "1d" }
+      );
+  
+      res.status(200).json({ message: "Login successful", token, role: user.Role });
+    } catch (err) {
+      res.status(500).json({ error: "Server error", details: err.message });
     }
-};
-
-
+  };
