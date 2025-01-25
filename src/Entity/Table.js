@@ -14,7 +14,8 @@ const Table = sequelize.define("Table", {
       unique: true,
     },
     status: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM,
+      values:['available','reserved'],
       defaultValue: "available", 
     },
   });
