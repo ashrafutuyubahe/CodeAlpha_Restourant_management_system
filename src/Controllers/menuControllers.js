@@ -1,5 +1,5 @@
 const express = require('express');
-const menuService = require('../controllers/menuService');
+const menuService = require('../Services/menuService');
 const router = express.Router();
 
 

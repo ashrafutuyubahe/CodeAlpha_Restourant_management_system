@@ -1,7 +1,7 @@
 const  Order = require('../Entity/Order');
 const OrderItem= require("../Entity/OrderItem");
 
-// Create a new order
+
 exports.createOrder = async (req, res) => {
   try {
     const { userId, tableId, status, totalPrice } = req.body;
@@ -12,7 +12,7 @@ exports.createOrder = async (req, res) => {
   }
 };
 
-// Get all orders
+
 exports.getOrders = async (req, res) => {
   try {
     const orders = await Order.findAll();
@@ -22,7 +22,7 @@ exports.getOrders = async (req, res) => {
   }
 };
 
-// Get order by ID
+
 exports.getOrderById = async (req, res) => {
   try {
     const order = await Order.findByPk(req.params.id);
@@ -36,7 +36,7 @@ exports.getOrderById = async (req, res) => {
   }
 };
 
-// Update order status
+
 exports.updateOrder = async (req, res) => {
   try {
     const { status, totalPrice } = req.body;
@@ -52,7 +52,7 @@ exports.updateOrder = async (req, res) => {
   }
 };
 
-// Delete order
+
 exports.deleteOrder = async (req, res) => {
   try {
     const order = await Order.findByPk(req.params.id);

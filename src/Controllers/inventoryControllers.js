@@ -1,5 +1,5 @@
 const express = require('express');
-const inventoryService = require('../controllers/inventoryService');
+const inventoryService = require('../Services/inventoryService');
 const router = express.Router();
 
 // Routes for Inventory

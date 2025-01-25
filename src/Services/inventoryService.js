@@ -11,7 +11,7 @@ exports.createInventoryItem = async (req, res) => {
   }
 };
 
-// Get all inventory items
+
 exports.getInventoryItems = async (req, res) => {
   try {
     const inventoryItems = await Inventory.findAll();
@@ -21,7 +21,7 @@ exports.getInventoryItems = async (req, res) => {
   }
 };
 
-// Get inventory item by ID
+
 exports.getInventoryItemById = async (req, res) => {
   try {
     const inventoryItem = await Inventory.findByPk(req.params.id);
@@ -35,7 +35,7 @@ exports.getInventoryItemById = async (req, res) => {
   }
 };
 
-// Update inventory item
+
 exports.updateInventoryItem = async (req, res) => {
   try {
     const { itemName, quantity, unit } = req.body;
@@ -51,7 +51,7 @@ exports.updateInventoryItem = async (req, res) => {
   }
 };
 
-// Delete inventory item
+
 exports.deleteInventoryItem = async (req, res) => {
   try {
     const inventoryItem = await Inventory.findByPk(req.params.id);
