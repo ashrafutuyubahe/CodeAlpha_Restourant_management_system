@@ -3,6 +3,8 @@ const orderService = require('../Services/orderService');
 const router = express.Router();
 
 
+router.post("/orders", orderService.placeOrder); 
+router.get("/orders/:id", orderService.getOrderDetails); 
 router.post('/orders', orderService.createOrder);
 router.get('/orders', orderService.getOrders);
 router.get('/orders/:id', orderService.getOrderById);
