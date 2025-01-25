@@ -1,9 +1,10 @@
 const { Sequelize } = require("sequelize");
+require("./associations");
 
-// Setting up sequelize with connection string
 const sequelize = new Sequelize(
   "postgres://postgres:123@localhost:5432/restaurant_management_sys"
 );
+
 
 async function authenticateDatabase() {
   try {
